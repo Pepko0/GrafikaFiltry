@@ -76,7 +76,7 @@ def choose_structuring_element():
             [1,1,1,1,1]
         ]
     elif choice == 4:
-        return [[1,1,1,1,1]]  # 1x5
+        return [[1,1,1,1,1]]  
     elif choice == 5:
         return [
             [1],
@@ -84,7 +84,7 @@ def choose_structuring_element():
             [1],
             [1],
             [1]
-        ]  # 5x1
+        ]  
     else:
         print("Nie ma takiej opcji, biorę domyślny 3x3.")
         return [
@@ -118,20 +118,18 @@ def main():
     save_image(bin_data, w, h, "images/test_binary.png")
 
     # 2) element strukturyzujący od użytkownika
-    # przykład: pełny kwadrat 3x3
     struct_elem = choose_structuring_element()
-
-
     dilation = DilationFilter(struct_elem)
     dilated_data = dilation.apply(bin_data)
     save_image(dilated_data, w, h, "images/test_dilate.png")
 
+    # erozja
     erosion = ErosionFilter(struct_elem)
     eroded_data = erosion.apply(bin_data)
     save_image(eroded_data, w, h, "images/test_erode.png")
 
 
-    print("Gotowe! Zapisano test_mean.png i test_median.png")
+    print("Już w końcu się zrobiło")
 
 
 if __name__ == "__main__":
